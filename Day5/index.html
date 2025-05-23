@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="https://img.icons8.com/?size=100&id=z657ovoGgS2o&format=png&color=000000">
+    <style>
+        table,th,tr,td{
+            border:1px solid red;
+        }
+
+        #innertable, #innertable th, #innertable tr, #innertable td{
+            border-color:green;
+        }
+    </style>
+</head>
+<body>
+
+    <table  width="1500" height="900">
+        <caption style="font-size:30px">This is a table based web design</caption>
+        <colgroup>
+         <col span="1" style="background-color: #ddd;">
+        </colgroup>
+        <thead>
+            <tr>
+                <th style="background-color: white;"><img style="float:left;" src="https://img.icons8.com/?size=100&id=z657ovoGgS2o&format=png&color=000000" alt="this image name"></th>
+                <th>
+                    
+                        <a href="form.html">Form</a>
+                        <a href="#">Link2</a>
+                        
+                </th>
+                <th>
+                    <button>Btn1</button>
+                    <button>Btn2</button>
+                    <button>Btn3</button>
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td rowspan="2">
+                    <p>sideBar</p>
+                    <p>sideBar</p>
+                    <p>sideBar</p>
+                </td>
+                <td colspan="2">
+
+                    <table id="innertable"  height="500" width="500">
+                        <tr>
+                            <th>Name</th>
+                            <td>My name is Bibek</td>
+                        </tr>
+                        <tr>
+                            <th>age</th>
+                            <td>I am 25 years old</td>
+                        </tr>
+                    </table>
+
+                </td>
+               
+            </tr>
+            <tr>
+                <td>Shyam</td>
+                <td>Yadav</td>
+                
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

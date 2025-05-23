@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML form</title>
+</head>
+<body>
+
+
+    <form action="/Day5/form.php" method="post" autocomplete="on" enctype="multipart/form-data" novalidate>
+        <label for="fname">First Name:</label><br>
+        <input id="fname" name="fName"><br>
+
+        <label for="lname">Last Name:</label><br>
+        <input id="lname" name="lName"><br>
+
+        <label for="pass">Password:</label><br>
+        <input id="pass" type="password" name="pass"><br><br>
+
+        <input type="file" name="image"><br>
+
+        <textarea rows=1 cols=10>
+            message...
+        </textarea><br>
+
+        <label for="food-items">
+            Food Items
+        </label>
+
+        <select id="food-items" name="food">
+            <optgroup name="fast food">
+                <option value="momos">momos</option>
+                <option  value="pizza">pizza</option>
+                <option  value="samosas">samosas</option>
+            </optgroup>
+            
+            <option  value="chawomin">chowmine</option>
+        </select><br>
+
+
+        <button>Submit</button>
+    </form>
+
+
+</body>
+</html>

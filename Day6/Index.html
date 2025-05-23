@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+
+    <iframe src="https://www.w3schools.com/html/html_entities.asp">
+    </iframe>
+
+    <form action="" autocomplete="off">
+        <fieldset>
+
+        <legend>Personal Info</legend>
+        <label for="fname">firstName</label><br>
+        <input id="fname" type="text" name="first_name"><br>
+        <label for="password" >Password</label><br>
+        <input id="password" type="password" name="password"><br>
+        <select name="food-items">
+            <optgroup label="fast-food">
+            <option value="pizza">pizz</option>
+            <option value="MOMOS">momos</option>
+            </optgroup>
+
+            <optgroup label="chinese">
+                <option value="chowmine">cho</option>
+            </optgroup>  
+        </select><br>
+       
+        <label for="datalist">Cars Name:</label>
+        <input name="data" list="list-data" id="datalist">
+        <datalist id="list-data">
+            <option value="data-name">data-name</option>
+            <option value="data-age">data-age</option>
+            <option>data-address</option>
+        </datalist>
+
+        <!--checkbox-->
+        <div>
+        <label for="volvo">Volvo</lable>
+        <input id="volvo" type="checkbox" name="car" value="Volvo">
+        <label for="tata">Tata</label>
+        <input id="tata" type="checkbox" name="food" value="momo">
+        <label for="honda">Honda</label>
+        <input id="honda" type="checkbox" name="bag" value="black">
+        </div>
+
+        <!--radio-->
+        <div>
+        <label for="volvo">Volvo</label>
+        <input id="volvo" type="radio" name="CAR" value="Volvo">
+        <label for="tata">Tata</label>
+        <input id="tata" type="radio" name="CAR" value="tata">
+        <label for="honda">Honda</label>
+        <input id="honda" type="radio" name="CAR" value="honda">
+        </div>
+        
+
+        <input type="email" placeholder="example@gmail.com" name="email"> <!--EMAIL-->
+        <input type="file"> <!--FILE-->
+        <input type="date"> <!--DATE PICKER-->
+        <input type="month"> <!--MONTH PICKER-->
+        <input type="week"> <!--WEEK PICKER-->
+        <input type="time"> <!--TIME PICKER-->
+        <input type="number" step="10"> <!--NUMBER-->
+        <input type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{3}"> <!--TELEPHONE-->
+        <input type="reset">
+        <input type="range" min="10" max="100">
+        <input type="color">
+       
+        <button>Submit</button>
+       
+
+        </fieldset>
+    </form>
+    
+</body>
+</html>
