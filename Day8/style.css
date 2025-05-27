@@ -1,0 +1,38 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:content-box; /* this will make the width and height include the padding and border */
+    background-color: aqua;
+}
+
+.box{
+    color: rgb(0,0,0); /* the color can range from 0 to 255 */
+    background-color: rgba(25, 0, 1000, 1); /* the last value is the opacity */
+    border-style:solid;
+    border-color:#ffe100 #ff9100 #004167 #ff2600; /* we can also use the name of the color */
+    border-width: 15px;
+    border-radius: 2px;
+    /* padding:20px 100px 60px 90px;  top right bottom left */
+    /* margin:100px; */
+    outline:2px dashed #ff6600; /* outline is like border but it does not take space */
+    /* outline-style: dashed;
+    outline-color: #ff6600;
+    outline-width:20px; */
+    /* outline-offset:90px; */
+    height:100px;
+    width:500px;
+}
+
+#yoh1ho{
+    color: hsl(0, 100%, 76%);
+    /* border-top-style: dotted;
+    border-right-style:solid;
+    border-bottom-style: double;
+    border-left-style: groove; */
+    max-width:500px;
+    border-style:solid double dotted groove; /*top right bottom left */
+}
+
+#yoh1ho:hover{
+    margin: -5px;
+}
