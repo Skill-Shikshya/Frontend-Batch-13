@@ -1,0 +1,35 @@
+/* pseudo class */
+
+p:first-child i{
+ background-color: red;
+}
+
+p i{
+    background-color: green;
+}
+
+p:nth-child(2) i{
+ background-color: orange;
+}
+
+section p:not(:first-child) i{
+    background-color: blue;
+}
+
+section p:has(strong){
+    background-color: pink;
+}
+
+#strong:focus{
+ background-color: purple;
+}
+
+/* pseudo elements */
+
+#strong::after{
+    content:"😂";
+}
+
+#strong::before{
+    content:"🥳";
+}
