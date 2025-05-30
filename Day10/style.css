@@ -12,6 +12,7 @@ p:nth-child(2) i{
  background-color: orange;
 }
 
+
 section p:not(:first-child) i{
     background-color: blue;
 }
@@ -21,6 +22,7 @@ section p:has(strong){
 }
 
 #strong:focus{
+    color:white;
  background-color: purple;
 }
 

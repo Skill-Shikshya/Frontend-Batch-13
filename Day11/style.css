@@ -1,0 +1,53 @@
+section{
+ height:100vh;
+ width:100vw;
+ background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmy.alfred.edu%2Fzoom%2F_images%2Ffoster-lake.jpg&f=1&nofb=1&ipt=7b62f28eab72741f3e28d8e8e7125101f9f6ed949e05a8fbeaf5ca6f19ab5cb8);
+ background-position:bottom left;
+ background-repeat:  no-repeat, repeat;
+ background-size:cover;
+ background-clip:border-box;
+ background-origin:border-box;
+ border:100px solid black;
+ background-color: black;
+}
+
+section p:hover{
+    opacity:0.5;
+}
+
+section img{
+    opacity:1;
+}
+
+a[target]{
+    color:red;
+    text-decoration:none;
+}
+
+a[target="_top"]{
+    color:green;
+}
+
+[class*='to']{
+    color: orange;
+}
+
+/* [class|="top"]{
+    color:pink;
+} */
+
+
+/* [class^="top"]{
+    color:aquamarine;
+} */
+
+
+/* [class$="link"]{
+    color:yellow;
+} */
+
+
+[title~='para1']{
+    color:red;
+}
+

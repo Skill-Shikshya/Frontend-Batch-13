@@ -3,7 +3,7 @@ h1{
     background-color: rgba(200,200,200,0.8);
     text-align:center;
     text-transform:uppercase;
-    font-family: "Poppins", sans-serif;
+    font-family: "Roboto", serif;
   font-weight: 500;
   font-style: normal;
 }
@@ -13,6 +13,10 @@ h1{
   text-decoration-style: wavy;
   text-decoration-color: red;
   text-decoration-thickness: 5px;
+}
+
+#p1{
+    white-space:nowrap;
 }
 
 #lorem1{
@@ -117,5 +121,5 @@ a:hover{
 }
 
 #lorem2 p{
-    clear:right;
+    clear:both;
 }
