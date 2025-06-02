@@ -57,7 +57,7 @@ article{
 
 article div{
  display:flex;
- align-items:center;
+ align-items:start;
  color:white !important;
 }
 
