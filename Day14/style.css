@@ -1,0 +1,46 @@
+.t1{
+    background-color: aliceblue;
+    width:50%;
+    transition:width 0.8s ease-in-out;
+}
+
+.t1:hover{
+   width:100%;
+}
+
+.t1 svg{
+    /* transform:translate(200px, 200px) scale(2);
+    transition:transform 0.8s linear 0.5s; */
+    animation: handGesture 2s linear infinite;
+}
+
+/* .t1 svg:hover{
+    transform:translate(200px, 200px) rotate(20deg) scale(2);
+} */
+
+/* @keyframes handGesture{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+} */
+
+/* @keyframes handGesture{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:rotate(2);
+    }
+} */
+
+@keyframes handGesture{
+    0%{
+        transform:scale(1);
+    }
+    50%{
+         transform:scale(2);
+    }
+}
