@@ -1,0 +1,51 @@
+.orange{
+    overflow: hidden;
+}
+
+#moving-divs{
+    margin-top:100px;
+    position:relative;
+}
+
+#moving-divs div{
+    height:100px;
+    width:100px;
+    background-color: white;
+}
+
+#moving1{
+    position:absolute;
+    top:20px;
+    left:20px;
+    transition:top 1s ease, left 1s ease;
+}
+
+#moving2{
+    position:absolute;
+    top:20px;
+    left:160px;
+    transition:transform 1s ease;
+}
+
+#moving3{
+    position:absolute;
+    top:20px;
+    right:20px;
+    transition:bottom 1s ease, right 1s ease;
+}
+
+
+.orange:hover #moving1{
+    top:0;
+    left:0;
+}
+
+.orange:hover #moving2{
+    transform: scale(1.3) rotate(30deg);
+
+}
+
+.orange:hover #moving3{
+    bottom:0px;
+    right:0px;
+}

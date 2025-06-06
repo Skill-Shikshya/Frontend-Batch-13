@@ -1,0 +1,22 @@
+.purple{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+#train div{
+    height:100px;
+    width:100px;
+    background-color: white;
+}
+
+#train{
+ display:flex;
+ gap:20px;
+ transition:transform 1s ease;
+}
+
+.purple:hover #train{
+ transform:translate(-60%, 0);
+}

@@ -1,0 +1,58 @@
+.green{
+    position:relative;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#barContainer{
+    display:flex;
+    gap:10px;
+    margin-left:20px;
+    align-items:end;
+}
+
+#barContainer div{
+    background-color: white;
+    width:20px;
+    border-radius:0;
+}
+
+#bar1{
+height:100px;
+transition:height 1s ease;
+}
+
+#bar2{
+    height:60px;
+    transition:height 1s ease;
+}
+
+#bar3{
+    height:40px;
+    transition:height 1s ease;
+}
+
+.green:hover #bar1{
+height:80px;
+}
+
+.green:hover #bar2{
+height:100px;
+}
+
+.green:hover #bar3{
+height:60px;
+}
+
+#arr{
+    position:absolute;
+    right:40px;
+    top:50px;
+    transition:transform 1s ease;
+}
+
+.green:hover #arr{
+    transform:rotate(-25deg);
+}
+

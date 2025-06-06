@@ -1,0 +1,37 @@
+.red{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow:hidden;
+}
+
+.red div:first-child{
+    display:flex;
+    flex-direction: column;
+    padding:40px;
+    gap:20px;
+}
+
+.red div:first-child h1{
+    font-size:40px;
+}
+
+.red div:first-child p{
+    font-size:24px;
+}
+
+.red div:first-child p:first-child{
+    font-size:12px;
+    width:fit-content;
+    padding:10px;
+    background-color: white;
+    border:1px solid gray;
+    border-radius:10px;
+}
+
+.red div img{
+    width:500px;
+    height:300px;
+    margin-bottom:-20px;
+}
+

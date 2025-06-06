@@ -1,0 +1,37 @@
+.blue{
+    display:flex;
+    align-items:center;
+}
+
+.blue div:first-child{
+   display:flex;
+   gap:50px;
+   justify-content: space-around;
+}
+
+#iconContainer{
+    position:relative;
+}
+
+#spark{
+    position:absolute;
+    top:-10px;
+    left:2px;
+    opacity:0;
+    transition:opacity 1s ease, transform 1s ease;
+}
+
+.blue:hover #spark{
+    opacity:1;
+    transform:translate(10px,-15px);
+}
+
+#Hand{
+    height:100px;
+    width:100px;
+    transition: transform 1s ease;
+}
+
+.blue:hover #Hand{
+    transform:rotate(30deg);
+}
