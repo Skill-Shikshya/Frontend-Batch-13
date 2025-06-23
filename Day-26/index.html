@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="button2click">Click me 2</button>
+    <div id="test">
+
+    </div>
+    <script src="script.js"></script>
+    <script>
+        const button2 = document.getElementById("button2click");
+        function runOnClick() {
+            console.log("hello i am clicked new");
+        }
+
+        button2.addEventListener("click", runOnClick);
+
+        let name = "asim";
+        let age = 90;
+        let users = [
+            { name: "ram", age: 50 },
+            { name: "ram1", age: 60 },
+            { name: "ram2", age: 30 },
+            { name: "ram3", age: 10 },
+        ];
+
+        users.forEach(user => {
+            //template literal
+            let cards = ` <div class="test-card">
+                                <div>Name: ${user.name}</div>
+                                <div>Age: ${user.age}</div>
+                        </div>`
+            document.getElementById("test").innerHTML += cards
+        })
+
+    </script>
+</body>
+
+</html>

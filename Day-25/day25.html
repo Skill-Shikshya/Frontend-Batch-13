@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="hello" class="bg-blue-500 text-white p-4">
+        <div> Hello world</div>
+    </div>
+    <button onclick="clickMe()" class="p-2 border rounded-xl">Click me button</button>
+    <button onclick="clickMe2()" class="p-2 border rounded-xl">Click me 2 button</button>
+
+    <script>
+        let helloDiv = document.getElementById("hello")
+
+        function clickMe() {
+            console.log(helloDiv.innerHTML)
+            helloDiv.classList.add("bg-red-500")
+            helloDiv.classList.add("!text-blue-500")
+            helloDiv.classList.add("!animate-bounce")
+
+            helloDiv.innerHTML = "i am now changed"
+        }
+        function clickMe2() {
+            console.log(helloDiv.innerHTML)
+            helloDiv.innerHTML = " Hello world"
+        }
+
+
+
+    </script>
+</body>
+
+</html>
