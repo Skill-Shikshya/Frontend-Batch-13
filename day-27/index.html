@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        #card-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #card-container li {
+            color: blueviolet;
+        }
+
+        #card-container img {
+            height: 100px;
+            width: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul class="" id="card-container"></ul>
+    </div>
+
+    <script>
+        let container = document.getElementById("card-container");
+        let items = [
+            {
+                item: "milk",
+                quantity: 3,
+                img: "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+            },
+            { item: "apple", quantity: 6 },
+            { item: "orange", quantity: 30 },
+        ];
+        const mappedItems = items.map((item) => {
+            return `<li>
+                        <div>Item: ${item.item}</div>
+                        <div>Quantity: ${item.quantity}</div>
+                        <div><img src="${item.img}"> </div>
+                        <button onclick="clickAction('${item.item}')">Click me</button>
+                    </li>`;
+        });
+
+        container.innerHTML = mappedItems.join("");
+
+        function clickAction(itemName) {
+            console.log(itemName)
+            alert(itemName + " selected")
+        }
+    </script>
+</body>
+
+</html>
