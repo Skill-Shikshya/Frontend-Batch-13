@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    hello
+    <!-- <div id="test"></div> -->
+    <button onclick="postProducts()">Submit form</button>'{ "title": "test title" }'
+    <script>
+        fetch("https://fakestoreapi.com/products").then((res) => { res.json().then((data) => { console.log(data) }) })
+
+        async function fetchProducts() {
+            let test = document.getElementById("test")
+
+            let res = await fetch("https://fakestoreapi.com/products?category=jewelery")
+            let data = await res.json()
+
+            let mappedData = data.map((item) => {
+                return `<div>${item.description}</div>`
+            })
+            test.innerHTML = mappedData.join("")
+        }
+        fetchProducts()
+
+        async function postProducts() {
+            let data = [{
+                id: 0,
+                title: "string",
+                price: 0.1,
+                description: "string",
+                category: "string",
+                image: "http://example.com"
+            }, {
+                id: 0,
+                title: "string",
+                price: 0.1,
+                description: "string",
+                category: "string",
+                image: "http://example.com"
+            }]
+            let jsonData = JSON.stringify(data)
+            console.log(jsonData)
+            console.log(JSON.parse(jsonData))
+            let test = fetch("https://fakestoreapi.com/products",
+                {
+                    method: "PUT",
+                    body: jsonData,
+                    headers: { 'Content-Type': 'application/json' },
+                })
+        }
+
+    </script>
+</body>
+
+</html>

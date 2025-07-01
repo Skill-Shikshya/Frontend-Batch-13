@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="name" name="name" placeholder="Enter your name">
+    <input type="password" id="password" name="password" placeholder="Enter your password">
+    <input type="text" name="img" id="img">
+    <button onclick="submitForm()">Submit</button>
+
+    <script>
+        function submitForm() {
+            let name = document.getElementById("name").value
+            let password = document.getElementById("password").value
+            let img = document.getElementById("img").value
+            if (!name || !password) {
+                alert("please enter complete credentials")
+                return
+            }
+            if (name.length <= 3) {
+                alert("name must be greater than 3 letters")
+                return
+            }
+            let data = { username: name, password: password }
+            login(data)
+        }
+        async function login(data) {
+
+            try {
+                let res = await fetch("https://fakestoreapi.com/auth/login", {
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                })
+                if (!res.ok) {
+                    let error = await res.text()
+                    throw new Error(error)
+                }
+                let jsonData = await res.json()
+                console.log(jsonData)
+                alert("logged")
+            } catch (error) {
+                alert(error.message)
+            }
+        }
+
+    </script>
+</body>
+
+</html>
