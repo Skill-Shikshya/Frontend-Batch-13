@@ -10,10 +10,48 @@
 <body>
     <input type="text" id="name" name="name" placeholder="Enter your name">
     <input type="password" id="password" name="password" placeholder="Enter your password">
-    <input type="text" name="img" id="img">
-    <button onclick="submitForm()">Submit</button>
+    <input type="text" name="img" id="img" placeholder="Enter image URL">
+
+    <div>
+        <button onclick="submitForm()">Submit</button>
+        <button onclick="loadSampleData()" type="button">Fill Sample Data</button>
+        <button onclick="clearForm()" type="button">Clear Form</button>
+    </div>
 
     <script>
+        // Function to pre-fill form with data
+        function fillForm(userData) {
+            document.getElementById("name").value = userData.username || ""
+            document.getElementById("password").value = userData.password || ""
+            document.getElementById("img").value = userData.img || ""
+        }
+
+        // Function to clear form
+        function clearForm() {
+            document.getElementById("name").value = ""
+            document.getElementById("password").value = ""
+            document.getElementById("img").value = ""
+        }
+
+        // Function to get current form data
+        function getFormData() {
+            return {
+                username: document.getElementById("name").value,
+                password: document.getElementById("password").value,
+                img: document.getElementById("img").value
+            }
+        }
+
+        // Example usage - you can call this to fill form with sample data
+        function loadSampleData() {
+            const sampleData = {
+                username: "johndoe",
+                password: "password123",
+                img: "https://example.com/avatar.jpg"
+            }
+            fillForm(sampleData)
+        }
+
         function submitForm() {
             let name = document.getElementById("name").value
             let password = document.getElementById("password").value
@@ -47,6 +85,21 @@
             } catch (error) {
                 alert(error.message)
             }
+        }
+
+        // Function to fill form from URL parameters
+        function fillFromURL() {
+            const urlParams = new URLSearchParams(window.location.search)
+            const name = urlParams.get('name')
+            const img = urlParams.get('img')
+
+            if (name) document.getElementById("name").value = name
+            if (img) document.getElementById("img").value = img
+        }
+
+        // Call on page load
+        window.onload = function () {
+            fillFromURL() // Auto-fill from URL if parameters exist
         }
 
     </script>

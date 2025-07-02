@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+
+<body>
+    <h1>User crud operation</h1>
+    <div class=" pl-10 max-w-[300px] flex gap-2 my-5 flex-col item-center justify-center">
+        <input type="text" class="hidden" id="id">
+        <label for="username" class="block mb-2 text-sm font-medium text-gray-900 ">Your Username</label>
+        <input type="text" id="username"
+            class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Your name" required />
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Your email</label>
+        <input type="email" id="email"
+            class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="name@flowbite.com" required />
+        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Your Password</label>
+        <input type="password" id="password"
+            class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="*******" required />
+        <button type="button" onclick="postUsersData()"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Submit</button>
+    </div>
+    <div class="relative overflow-x-auto">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        UID
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Username
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Email
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Password
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="userTable">
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const userTable = document.getElementById("userTable")
+        async function getUsersData() {
+            try {
+                const raw = await fetch("https://fakestoreapi.com/users")
+                if (!raw.ok) {
+                    let error = await raw.text();
+                    throw new Error(error)
+                }
+                const data = await raw.json()
+                let tableData = data.map((item) => {
+                    return `    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                    ${item.id}
+                                </th>
+                                <td class="px-6 py-4">
+                                    ${item.username}
+                                </td>
+                                <td class="px-6 py-4">
+                                    ${item.email}
+                                </td>
+                                <td class="px-6 py-4">
+                                    ${item.password}
+                                </td>
+                                 <td class="px-6 py-4 flex gap-3">
+                                    <button onclick="deleteUserData(${item.id})" class="bg-red-500 text-white rounded-xl px-2 py-1 hover:cursor-pointer hover:bg-red-600">Delete</button>
+                                    <button onclick="updateUsersData(${item.id},'${item.username}','${item.email}','${item.password}')" class="bg-green-500 text-white rounded-xl px-2 py-1 hover:cursor-pointer hover:bg-green-600">Edit</button>
+                                </td>
+                            </tr>`
+                })
+                userTable.innerHTML = tableData.join("")
+            } catch (error) {
+                console.error(error.message)
+                alert(error.message)
+            }
+        }
+        getUsersData()
+
+        async function deleteUserData(id) {
+            try {
+                const raw = await fetch("https://fakestoreapi.com/users/" + id, {
+                    method: "DELETE", headers: { 'Content-Type': 'application/json' },
+                })
+                if (!raw.ok) {
+                    let error = await raw.text();
+                    throw new Error(error)
+                }
+                const data = await raw.json()
+                console.log(data)
+                getUsersData()
+                alert(data.name.firstname + " Deleted successfully")
+            } catch (error) {
+                console.error(error.message)
+                alert(error.message)
+            }
+        }
+
+        async function postUsersData() {
+            let id = document.getElementById("id").value
+            let email = document.getElementById("email").value
+            let password = document.getElementById("password").value
+            let username = document.getElementById("username").value
+            let user = {
+                "username": username,
+                "email": email,
+                "password": password
+            }
+            console.log(id, user)
+
+            if (id) {
+                try {
+                    const raw = await fetch("https://fakestoreapi.com/users/" + id, {
+                        method: "PUT", headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(user)
+                    })
+                    if (!raw.ok) {
+                        let error = await raw.text();
+                        throw new Error(error)
+                    }
+                    const data = await raw.json()
+                    getUsersData()
+                    alert("User updated successfully")
+                    clearform()
+                } catch (error) {
+                    console.error(error.message)
+                    alert(error.message)
+                }
+            } else
+                try {
+                    const raw = await fetch("https://fakestoreapi.com/users", {
+                        method: "POST", headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(user)
+                    })
+                    if (!raw.ok) {
+                        let error = await raw.text();
+                        throw new Error(error)
+                    }
+                    const data = await raw.json()
+                    getUsersData()
+                    alert("User created successfully")
+                    clearform()
+                } catch (error) {
+                    console.error(error.message)
+                    alert(error.message)
+                }
+        }
+
+        async function updateUsersData(id, name, email, password) {
+            console.log(id, name, email, password)
+            document.getElementById("id").value = id
+            document.getElementById("email").value = email
+            document.getElementById("password").value = password
+            document.getElementById("username").value = name
+        }
+        function clearform() {
+            document.getElementById("id").value = ""
+            document.getElementById("email").value = ""
+            document.getElementById("password").value = ""
+            document.getElementById("username").value = ""
+        }
+    </script>
+</body>
+
+</html>
