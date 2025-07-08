@@ -11,6 +11,7 @@
 
 <body>
     <h1>User crud operation</h1>
+    <div onclick="changeToAbout()">Go to about page</div>
     <div class=" pl-10 max-w-[300px] flex gap-2 my-5 flex-col item-center justify-center">
         <input type="text" class="hidden" id="id">
         <label for="username" class="block mb-2 text-sm font-medium text-gray-900 ">Your Username</label>
@@ -25,7 +26,7 @@
         <input type="password" id="password"
             class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="*******" required />
-        <button type="button" onclick="postUsersData()"
+        <button type="button" id="submit-button" onclick="postUsersData()"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Submit</button>
     </div>
     <div class="relative overflow-x-auto">
@@ -56,6 +57,9 @@
     </div>
 
     <script>
+        function changeToAbout() {
+            document.body.innerHTML = "<h1 class='text-xl'>about page</h1>"
+        }
         const userTable = document.getElementById("userTable")
         async function getUsersData() {
             try {
@@ -142,7 +146,8 @@
                     console.error(error.message)
                     alert(error.message)
                 }
-            } else
+            }
+            else
                 try {
                     const raw = await fetch("https://fakestoreapi.com/users", {
                         method: "POST", headers: { 'Content-Type': 'application/json' },
@@ -164,12 +169,15 @@
 
         async function updateUsersData(id, name, email, password) {
             console.log(id, name, email, password)
+            document.getElementById("submit-button").innerText = "Update"
             document.getElementById("id").value = id
             document.getElementById("email").value = email
             document.getElementById("password").value = password
             document.getElementById("username").value = name
         }
         function clearform() {
+            document.getElementById("submit-button").innerText = "submit"
+
             document.getElementById("id").value = ""
             document.getElementById("email").value = ""
             document.getElementById("password").value = ""
