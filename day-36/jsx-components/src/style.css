@@ -13,3 +13,17 @@ li {
 .flex {
   display: flex;
 }
+
+.main-button {
+  padding: 5px 10px;
+  background-color: wheat;
+  border: 1px solid rgb(75, 75, 75);
+  border-radius: 20px;
+}
+.bg-red {
+  background-color: red;
+}
+
+.bg-blue {
+  background-color: blue;
+}
