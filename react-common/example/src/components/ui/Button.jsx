@@ -1,21 +1,11 @@
-import React, { useState } from "react";
-
-function Button(props) {
-  const [toggle, setToggle] = useState(0); //this is a hook
-
-  function toggleButton() {
-    setToggle(toggle + 1);
-  }
-
-  console.log("i am button", toggle);
-
+function Button({ children, className, onClick, onMouseDown }) {
   return (
     <button
-      onClick={toggleButton}
-      id={"my-button" + props.id}
-      className="border border-amber-500 py-1 rounded-xl px-3"
+      onClick={onClick}
+      onMouseDown={onMouseDown}
+      className={"border border-amber-500 py-1 rounded-xl px-3 " + className}
     >
-      {toggle} {props.children}
+      {children}
     </button>
   );
 }
