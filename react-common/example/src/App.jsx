@@ -5,15 +5,16 @@ import Pages from "./components/Main/Pages";
 
 function App() {
   const [page, setPage] = useState("home-page");
+  const [selected, setSelected] = useState([]);
 
   function setPageFunction(pageName) {
     setPage(pageName + "-page");
   }
-
+  const count = selected.length;
   return (
     <>
-      <Layout setPage={setPageFunction} page={page}>
-        <Pages page={page} />
+      <Layout count={count} setPage={setPageFunction} page={page}>
+        <Pages selected={selected} setSelected={setSelected} page={page} />
       </Layout>
     </>
   );

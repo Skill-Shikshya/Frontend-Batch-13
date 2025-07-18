@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import Main from "../components/Main/Main";
 import Button from "../components/ui/Button";
-function Home() {
-  const [selected, setSelected] = useState([]);
+
+function Home({ selected, setSelected }) {
   const [products, setProducts] = useState([]);
+  const [users, setUsers] = useState([]);
+
   async function fetchData() {
     try {
       let raw = await fetch("https://fakestoreapi.com/products");
@@ -16,12 +17,23 @@ function Home() {
       console.log(error);
     }
   }
-
+  async function fetchUsers() {
+    try {
+      let raw = await fetch("https://fakestoreapi.com/users");
+      if (!raw.ok) {
+        throw new Error(await raw.text());
+      }
+      let data = await raw.json();
+      setUsers(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   useEffect(() => {
     fetchData();
+    fetchUsers();
     return () => {};
   }, []);
-  console.log(selected);
   return (
     <div className="p-10 bg-amber-300">
       {/* <Main /> */}
