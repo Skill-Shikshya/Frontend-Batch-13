@@ -1,14 +1,33 @@
-import React from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 
 function Header() {
   return (
-    <div>
-      <Link to="/about">about</Link>
-      <br />
-      <Link to="/home">home</Link>
-      <br />
-      <Link to={"/contact"}>Contact us</Link>
+    <div className="flex gap-10 justify-center bg-amber-100 p-2">
+      <NavLink
+        className={({ isActive, isPending }) =>
+          isPending ? "pending" : isActive ? "bg-amber-700 text-white" : ""
+        }
+        to="/home"
+      >
+        Home
+      </NavLink>
+      <NavLink
+        className={({ isActive, isPending }) =>
+          isPending ? "pending" : isActive ? "bg-amber-700 text-white" : ""
+        }
+        to="/about"
+      >
+        About
+      </NavLink>
+
+      <NavLink
+        className={({ isActive, isPending }) =>
+          isPending ? "pending" : isActive ? "bg-amber-700 text-white" : ""
+        }
+        to={"/contact"}
+      >
+        Contact us
+      </NavLink>
     </div>
   );
 }
