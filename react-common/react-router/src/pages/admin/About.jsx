@@ -1,7 +1,11 @@
-import React from "react";
+import Logout from "../../component/Logout";
 
 function About() {
-  return <div>About</div>;
+  return (
+    <div>
+      About <Logout />
+    </div>
+  );
 }
 
 export default About;

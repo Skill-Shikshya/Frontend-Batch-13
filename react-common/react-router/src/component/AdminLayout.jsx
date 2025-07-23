@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from "react-router";
 import Logout from "./Logout";
 
-function AdminLayout({ setIsLogin }) {
+function AdminLayout() {
   return (
     <div className="flex gap-10">
       <aside className="bg-blue-200">
@@ -31,7 +31,7 @@ function AdminLayout({ setIsLogin }) {
           >
             <li>About</li>
           </NavLink>
-          <Logout setIsLogin={setIsLogin} />
+          <Logout />
         </ul>
       </aside>{" "}
       <Outlet />

@@ -1,28 +1,12 @@
-import React, { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router";
 
-function Login({ setIsLogin }) {
+function Login() {
+  const { login } = useContext(UserContext); //consumer of the context UserContext
   const [username, setUsername] = useState("johnd");
   const [password, setPassword] = useState("m38rmF$");
   const navigate = useNavigate();
-  async function login() {
-    try {
-      let res = await fetch("https://fakestoreapi.com/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username: username, password: password }),
-      });
-      if (!res.ok) {
-        throw new Error(await res.text());
-      }
-      await res.json();
-      localStorage.setItem("isLogin", "true");
-      setIsLogin(true);
-      navigate("/admin");
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   return (
     <div>
@@ -47,7 +31,12 @@ function Login({ setIsLogin }) {
           id="password"
           className="border"
         />
-        <button type="button" onClick={login}>
+        <button
+          type="button"
+          onClick={() => {
+            login(username, password, navigate);
+          }}
+        >
           Submit
         </button>
       </div>

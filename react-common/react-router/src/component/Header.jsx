@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router";
+import { UserContext } from "../context/UserContext";
 
 function Header() {
+  const { cart } = useContext(UserContext);
   return (
     <div className="flex gap-10 justify-center bg-amber-100 p-2">
       <NavLink
@@ -28,6 +31,7 @@ function Header() {
       >
         Contact us
       </NavLink>
+      {cart}
     </div>
   );
 }
