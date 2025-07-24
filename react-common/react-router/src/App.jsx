@@ -10,6 +10,7 @@ import AboutAdmin from "./pages/admin/About";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import { useCart } from "./hooks/useCart";
 
 const localLogin = localStorage.getItem("isLogin");
 const router = createBrowserRouter([
@@ -90,7 +91,7 @@ const router = createBrowserRouter([
 ]);
 function App() {
   const [isLogin, setIsLogin] = useState(localLogin === "true");
-  const [cart, setCart] = useState(0);
+  const { cart, addToCart, removeFromCart } = useCart();
   async function login(username, password, navigate) {
     try {
       let res = await fetch("https://fakestoreapi.com/auth/login", {
@@ -113,10 +114,11 @@ function App() {
     <UserContext.Provider
       value={{
         isLogin: isLogin,
-        cart: cart,
         setIsLogin: setIsLogin,
         login: login,
-        setCart: setCart,
+        cart: cart,
+        addToCart: addToCart,
+        removeFromCart: removeFromCart,
       }}
     >
       <RouterProvider router={router} />

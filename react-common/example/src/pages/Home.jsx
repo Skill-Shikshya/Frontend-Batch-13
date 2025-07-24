@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import Button from "../components/ui/Button";
+import { useCart } from "../hooks/useCart";
 
-function Home({ selected, setSelected }) {
+function Home() {
   const [products, setProducts] = useState([]);
   const [users, setUsers] = useState([]);
-
+  const { cart, addToCart, removeFromCart } = useCart();
   async function fetchData() {
     try {
       let raw = await fetch("https://fakestoreapi.com/products");
@@ -38,25 +39,19 @@ function Home({ selected, setSelected }) {
     <div className="p-10 bg-amber-300">
       {/* <Main /> */}
       <h2>Selected people:</h2>
-      {selected.map((item) => {
+      {cart.map((item) => {
         return <div key={item.id}>{item.title}</div>;
       })}
-      No of items in cart: {selected.length}
+      No of items in cart: {cart.length}
       Total CheckoutPrice= {}
       <br />
       <hr />
       <ul>
         {products.map((items, index) => {
-          let isIncluded = selected.some((data) => {
-            return data.id === items.id;
-          });
           return (
             <li
               onClick={() => {
-                if (isIncluded) {
-                  return;
-                }
-                setSelected([...selected, items]);
+                addToCart(DataTransferItemList);
               }}
               key={index}
               className={`py-1 transition-all duration-300 ease-in-out ${
@@ -66,10 +61,7 @@ function Home({ selected, setSelected }) {
               {items.id}) {items.title}{" "}
               <Button
                 onClick={() => {
-                  if (isIncluded) {
-                    return;
-                  }
-                  setSelected([...selected, items]);
+                  addToCart(items);
                 }}
               >
                 {isIncluded ? "Selected" : "Select"}
@@ -77,10 +69,7 @@ function Home({ selected, setSelected }) {
               {isIncluded && (
                 <Button
                   onClick={() => {
-                    const filteredArray = selected.filter(
-                      (selectedItems) => selectedItems.id !== items.id
-                    );
-                    setSelected(filteredArray);
+                    removeFromCart(items);
                   }}
                 >
                   Remove item
