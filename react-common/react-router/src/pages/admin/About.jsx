@@ -1,9 +1,7 @@
-import { useContext } from "react";
 import Logout from "../../component/Logout";
-import { UserContext } from "../../context/UserContext";
+import { useUserStore } from "../../store/useUserStore";
 
 function About() {
-  const { cart } = useContext(UserContext);
   return (
     <div>
       About <Logout />
