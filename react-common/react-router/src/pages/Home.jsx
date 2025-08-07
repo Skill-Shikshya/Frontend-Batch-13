@@ -1,62 +1,46 @@
-import { useContext } from "react";
-import { useDataFetch } from "../hooks/useDataFetch";
-import { UserContext } from "../context/UserContext";
+import { useSearchParams } from "react-router";
+import { useCartStore } from "../store/useCartStore";
 
 function Home() {
-  const [products, productLoading, productError, fetchProducts] = useDataFetch({
-    url: "products",
-    initialData: [],
-    runOnInit: false,
-  });
-  const [users, usersLoading, usersError] = useDataFetch({
-    url: "users",
-    initialData: [],
-  });
-  const { cart, addToCart } = useContext(UserContext);
-  async function postUsers(data) {
-    try {
-      await fetch("", {
-        method: "POST",
-        headers: { "content-type": "Application/json" },
-        body: JSON.stringify(data),
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  const [_, __, ___, postUsersCuston] = useDataFetch({
-    url: "users",
-    method: "POST",
-    body: JSON.stringify({}),
-    onError: () => {
-      console.log("error");
-    },
-    onSuccess: () => {
-      fetchProducts();
-    },
-  });
-
-  const [
-    productResponse,
-    productPostLoading,
-    productPostError,
-    postCustomProduct,
-  ] = useDataFetch({
-    url: "users",
-    method: "POST",
-  });
-
-  if (productLoading || usersLoading) {
-    return <>Loading......</>;
-  }
-  if (usersError || productError) {
-    return <>Something went wrong.....</>;
-  }
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchId = searchParams.get("id");
+  const searchName = searchParams.get("name");
+  console.log(searchId, searchName);
+  const { cart } = useCartStore();
   return (
     <>
-      <button onClick={fetchProducts}>fetch products again</button>
+      {cart.length}
       <div>Home</div>
+      <div>
+        <button
+          onClick={() => {
+            setSearchParams({ id: "30", name: searchName });
+          }}
+        >
+          Change id
+        </button>
+      </div>
+      <button
+        onClick={() => {
+          setSearchParams({ id: searchId, name: "changed name" });
+        }}
+      >
+        Change Name
+      </button>
+      <div>
+        {searchId}, {searchName}
+      </div>
+      <select
+        onChange={(e) => {
+          setSearchParams({ category: e.target.value });
+        }}
+        value={searchParams.get("category")}
+      >
+        <option value="clothes">Clothes</option>
+        <option value="phone">Phone</option>
+        <option value="laptop">Laptop</option>
+        <option value="charger">Charger</option>
+      </select>
     </>
   );
 }

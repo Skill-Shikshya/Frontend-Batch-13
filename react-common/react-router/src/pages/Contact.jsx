@@ -5,7 +5,7 @@ function Contact() {
     queryKey: ["products"],
     staleTime: 60 * 1000,
     queryFn: () =>
-      fetch("https://fakestoreapi.com/producasdasdasdasdts").then(
+      fetch("https://fakestoreapi.com/products").then(
         async (raw) => await raw.json()
       ),
   });

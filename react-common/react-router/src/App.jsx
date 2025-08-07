@@ -11,6 +11,7 @@ import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import { useCart } from "./hooks/useCart";
+import Products from "./pages/Products";
 
 const localLogin = localStorage.getItem("isLogin");
 const router = createBrowserRouter([
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/home",
         element: <Home />,
+      },
+      {
+        path: "/products",
+        element: <Products />,
       },
       {
         path: "/about",

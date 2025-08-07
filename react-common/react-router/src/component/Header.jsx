@@ -1,9 +1,11 @@
 import { useContext } from "react";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useSearchParams } from "react-router";
 import { UserContext } from "../context/UserContext";
 
 function Header() {
   const { cart } = useContext(UserContext);
+  const [searchParams] = useSearchParams();
+
   return (
     <div className="flex gap-10 justify-center bg-amber-100 p-2">
       <NavLink
@@ -22,7 +24,6 @@ function Header() {
       >
         About
       </NavLink>
-
       <NavLink
         className={({ isActive, isPending }) =>
           isPending ? "pending" : isActive ? "bg-amber-700 text-white" : ""
@@ -32,6 +33,7 @@ function Header() {
         Contact us
       </NavLink>
       {cart}
+      selected category= {searchParams.get("category")}
     </div>
   );
 }

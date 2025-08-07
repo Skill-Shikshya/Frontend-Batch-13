@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useCallback } from "react";
 
@@ -24,13 +25,9 @@ function Filters() {
       >
         Check
       </button>
-      <button
-        onClick={() => {
-          router.push(pathname + "?" + createQueryString("asc-desc", "dsc"));
-        }}
-      >
+      <Link href={pathname + "?" + createQueryString("asc-desc", "dsc")}>
         Check
-      </button>
+      </Link>
     </div>
   );
 }
