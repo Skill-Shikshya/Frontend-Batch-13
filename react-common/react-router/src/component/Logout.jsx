@@ -6,6 +6,7 @@ function Logout() {
 
   function onLogOut() {
     localStorage.removeItem("isLogin");
+    localStorage.removeItem("token");
     setIsLogin(false);
   }
   return (

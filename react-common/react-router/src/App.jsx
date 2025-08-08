@@ -12,6 +12,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import { useCart } from "./hooks/useCart";
 import Products from "./pages/Products";
+import ProductInnerPage from "./pages/ProductInnerPage";
+import Chat from "./pages/Chat";
 
 const localLogin = localStorage.getItem("isLogin");
 const router = createBrowserRouter([
@@ -29,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: <Products />,
+      },
+      {
+        path: "/products/:slug",
+        element: <ProductInnerPage />,
       },
       {
         path: "/about",
@@ -55,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/chat",
+        element: <Chat />,
       },
       {
         path: "/cart",
@@ -107,7 +117,9 @@ function App() {
       if (!res.ok) {
         throw new Error(await res.text());
       }
-      await res.json();
+      const data = await res.json();
+      console.log(data);
+      localStorage.setItem("token", data.token);
       localStorage.setItem("isLogin", "true");
       setIsLogin(true);
       navigate("/admin");

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useCartStore } from "../store/useCartStore";
+import { Link } from "react-router";
 
 function Products() {
   const { cart, addToCart } = useCartStore();
@@ -29,7 +30,7 @@ function Products() {
               key={item.id}
               className="text-black flex justify-between bg-black/10 p-2 rounded-xl"
             >
-              {item.title}
+              <Link to={"/products/" + item.id}>{item.title}</Link>
 
               {isIncart && (
                 <span className="flex gap-2 ">
